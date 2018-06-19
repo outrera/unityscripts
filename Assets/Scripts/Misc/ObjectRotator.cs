@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rotator : MonoBehaviour {
+public class ObjectRotator : MonoBehaviour {
 	
 	//this just makes an object spin in space.  Good for things that need to get your attention
 	void Update () 

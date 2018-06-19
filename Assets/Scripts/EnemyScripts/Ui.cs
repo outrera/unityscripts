@@ -5,11 +5,11 @@ public class Ui : MonoBehaviour {
 
 	public Transform goal;
 	private Vector3 home;
-	private NavMeshAgent agent;
+	private UnityEngine.AI.NavMeshAgent agent;
 	// Use this for initialization
 	void Start () {
 		home = GetComponent<Transform> ().position;
-		agent = GetComponent<NavMeshAgent> ();
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 
 	}
 	
