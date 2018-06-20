@@ -26,7 +26,6 @@ public class Teleporter : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             other.gameObject.transform.position = destination.transform.position + destination.transform.forward;
-            CharacterController cc = GetComponent<CharacterController>();
             other.gameObject.transform.Rotate(0, 30, 0);
             UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpc = other.gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
             var type = fpc.GetType();

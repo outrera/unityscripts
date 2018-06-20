@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ZoomShoot : MonoBehaviour {
-    public Camera camera;
+    public Camera thisCamera;
     float originalFov;
 	// Use this for initialization
 	void Start () {
-        originalFov = camera.fieldOfView;
+        originalFov = thisCamera.fieldOfView;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown("z"))
         {
-            camera.fieldOfView = 10;
+            thisCamera.fieldOfView = 10;
         }
         if (Input.GetKeyUp("z"))
         {
-            camera.fieldOfView = originalFov;
+            thisCamera.fieldOfView = originalFov;
         }
 	}
 }

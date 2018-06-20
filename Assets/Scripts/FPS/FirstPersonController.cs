@@ -64,9 +64,7 @@ public class BullockFirstPersonController : MonoBehaviour {
 			}
 		}
 		
-		// Grounded check
-		Ray ray = new Ray(transform.position, -transform.up);
-		RaycastHit hit;
+	
 		
 		//if (Physics.Raycast(ray, out hit, 2f + .1f, groundedMask)) {
 		if (Physics.Raycast(transform.position, -transform.up, 3)) {

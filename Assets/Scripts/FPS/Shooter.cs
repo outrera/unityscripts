@@ -5,7 +5,7 @@ public class Shooter : MonoBehaviour {
 
 
 	public GameObject particles;
-	public Camera camera;
+	public Camera thisCamera;
 	public bool fps;
 	public int damage = 1;
 	public bool hasWeapon;
@@ -26,7 +26,7 @@ public class Shooter : MonoBehaviour {
 		Ray ray;
 		if (fps)
 		{
-			ray = camera.ScreenPointToRay(new Vector3(camera.pixelWidth/2, camera.pixelHeight/2, 0));
+			ray = thisCamera.ScreenPointToRay(new Vector3(thisCamera.pixelWidth/2, thisCamera.pixelHeight/2, 0));
 		}
 
 		else 
