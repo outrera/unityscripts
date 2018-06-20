@@ -17,7 +17,8 @@ public class Basics : MonoBehaviour
 
     void Start()
     {
-        overlay.CrossFadeAlpha(0.00f, 0, false);
+        GetComponent<Basics>().overlay.color = Color.black;
+        GetComponent<Basics>().overlay.CrossFadeAlpha(0.0f, 2.0f, false);
     }
 
 	void Update()
