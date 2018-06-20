@@ -64,6 +64,7 @@ public class Damage : MonoBehaviour {
                     if (takeFallDamage)
                     {
                         damage = true;
+                        takeFallDamage = false;
                     }
                 }
                 else
