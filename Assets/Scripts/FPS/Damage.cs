@@ -9,13 +9,22 @@ public class Damage : MonoBehaviour {
     
     //health variables
     private bool damage = false;
+    private bool hittable = true;
+    public float hitDelay = 1.0f;
+    private float hitTimer = 0.0f;
 	public bool useHealth = false;
 	public int healthCount = 3;
     public int maximumHealth = 3;
     public int healthPickUpValue = 1;
 	private int originalHealth = 3;
     public Text healthText;
-    
+    public bool useFallDamage = false;
+    private bool previouslyFalling = false;
+    public float distanceForFallDamage = 20.0f;
+    private float startYFallPosition = 0.0f;
+    private bool takeFallDamage = false;
+    private CharacterController cc;
+
     void Start () 
     {
 		if (useHealth == false) 
@@ -25,18 +34,59 @@ public class Damage : MonoBehaviour {
 
 		originalHealth = healthCount;
         UpdateHealthText();
+        cc = GetComponent<CharacterController>();
+
 	}
     
     void Update () 
     {
 		if (useHealth) {CheckHealth();}
+        hitTimer += Time.deltaTime;
+        if (hitTimer > hitDelay)
+        {
+            hittable = true;
+        }
+        if (useFallDamage)
+        {
+            if (previouslyFalling == false)
+            {
+                if (cc.isGrounded == false)
+                {
+                    previouslyFalling = true;
+                    startYFallPosition = transform.position.y;
+                }
+            }
+            else
+            {
+                if (cc.isGrounded == true)
+                {
+                    previouslyFalling = false;
+                    if (takeFallDamage)
+                    {
+                        damage = true;
+                    }
+                }
+                else
+                {
+                    if (startYFallPosition - transform.position.y > distanceForFallDamage)
+                    {
+                        takeFallDamage = true;
+                    }
+                }
+            }
+        }
 	}
     
     void OnTriggerEnter(Collider other) 
 	{
 		if (other.gameObject.CompareTag ( "Enemy"))
 		{
-			damage = true;
+            if (hittable == true)
+            {
+                damage = true;
+                hittable = false;
+                hitTimer = 0.0f;
+            }
 		}
         if (other.gameObject.CompareTag("Health"))
         {
@@ -45,10 +95,13 @@ public class Damage : MonoBehaviour {
                 healthCount += healthPickUpValue;
                 other.gameObject.SetActive(false);
                 UpdateHealthText();
+                GetComponent<Basics>().overlay.color = Color.green;
+                GetComponent<Basics>().overlay.CrossFadeAlpha(3.0f, 0.1f, false);
+                ClearDamage();
             }
         }
 	}
-    
+
     void CheckHealth()
 	{
 		if (damage == true)

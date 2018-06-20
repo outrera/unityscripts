@@ -15,7 +15,7 @@ public class ParticleSystemDestroy : MonoBehaviour
 		if (this.tag == "Particle" && destroyed == false) 
 		{
 			destroyed = true;
-			Destroy (gameObject, GetComponent<ParticleSystem> ().duration); 
+			Destroy (gameObject, GetComponent<ParticleSystem> ().main.duration); 
 		}
 	}
 

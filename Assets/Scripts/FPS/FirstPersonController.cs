@@ -3,7 +3,7 @@ using System.Collections;
 //for the score
 using UnityEngine.UI;
 
-public class FirstPersonController : MonoBehaviour {
+public class BullockFirstPersonController : MonoBehaviour {
 	
 	// public vars
 	public float mouseSensitivityX = 3.5f;

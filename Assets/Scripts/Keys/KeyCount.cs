@@ -22,7 +22,7 @@ public class KeyCount : MonoBehaviour {
 		if (other.CompareTag ("key")) {
 			keys++;
 		}
-		int.TryParse (tagText, tagNum);
+		int.TryParse (tagText, out tagNum);
 		if (tagNum != 0)
 		{
 			if (keys >= tagNum)

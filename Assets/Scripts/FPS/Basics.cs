@@ -17,7 +17,7 @@ public class Basics : MonoBehaviour
 
     void Start()
     {
-        overlay.CrossFadeAlpha(0.01f, 0, false);
+        overlay.CrossFadeAlpha(0.00f, 0, false);
     }
 
 	void Update()
@@ -41,7 +41,7 @@ public class Basics : MonoBehaviour
 
 	void FadeOut(Graphic graphic) 
 	{
-		graphic.CrossFadeAlpha(0.01f, 2.0f, false);
+		graphic.CrossFadeAlpha(0.00f, 2.0f, false);
 	}
 
 	void FadeIn(Graphic graphic)
