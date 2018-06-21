@@ -13,7 +13,12 @@ public class EnterEnable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (collectAll) {
+			GameObject[] collected = GameObject.FindGameObjectsWithTag ("Collect");
+			if (collected.Length > 0) {	
+				objectToEnable.SetActive(true);	
+			}
+		}
 	}
 
 	void OnTriggerEnter(Collider other) {
