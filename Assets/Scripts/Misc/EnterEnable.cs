@@ -15,7 +15,7 @@ public class EnterEnable : MonoBehaviour {
 	void Update () {
 		if (collectAll) {
 			GameObject[] collected = GameObject.FindGameObjectsWithTag ("Collect");
-			if (collected.Length > 0) {	
+			if (collected.Length == 0) {	
 				objectToEnable.SetActive(true);	
 			}
 		}
@@ -24,13 +24,7 @@ public class EnterEnable : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		
 		if (other.CompareTag("Player")) {
-			if (collectAll) {
-				GameObject[] collected = GameObject.FindGameObjectsWithTag ("Collect");
-				if (collected.Length > 0) {	
-					objectToEnable.SetActive(true);	
-				}
-			}
-			else objectToEnable.SetActive(true);
+			objectToEnable.SetActive(true);
 		}
 	}
 }
